@@ -60,15 +60,15 @@
         <div id="interest" class="calculator-compound-interest grid justify-center">
             <p class="text-center">Valor inicial</p>
             <input type="tel" placeholder="0" id="c"/>
-            <p class="text-center">Taxa de juros</p>
-            <input type="number" placeholder="%" id="i"/>
+            <p class="text-center">Taxa de juros a.m.</p>
+            <input type="tel" placeholder="%" id="i"/>
             <p class="text-center">Período em meses</p>
-            <input type="number" placeholder="3 meses" id="t"/>
+            <input type="tel" placeholder="3 meses" id="t"/>
             <div class="flex justify-center">
                 <input type="button" onclick="calculateInterest()" value="="/>
             </div>
             <p class="text-center">Resultado</p>
-            <input type="number" placeholder="0,0" id="interest-result" disabled/>
+            <input type="tel" placeholder="0,0" id="interest-result" disabled/>
         </div>
 
     </div>
@@ -90,7 +90,7 @@
     .calculator-wrapper {
         background-color: #232323;
         position: absolute;
-        left: 33%;
+        left: 40%;
         height: 600px;
         width: 450px;
         z-index: 99;
@@ -100,9 +100,9 @@
         background-color: #232323;
         position: absolute;
         left: 40%;
-        top: 39%;
+        top: 41%;
         height: 382px;
-        width: 250px;
+        width: 300px;
         transition-duration: 1s;
         z-index: 9;
     }
@@ -110,10 +110,10 @@
     .calculator-compound-interest {
         background-color: #232323;
         position: absolute;
-        left: 35%;
-        top: 39%;
+        left: 40%;
+        top: 41%;
         height: 382px;
-        width: 250px;
+        width: 300px;
         transition-duration: 1s;
         z-index: 9;
         padding: 10px;
@@ -215,12 +215,12 @@
     let showHistoryCard = true;
     const showInterest = () => {
         showInterestCard = !showInterestCard;
-        document.getElementById("interest").style.left = showInterestCard ? '35%' : '12%';
+        document.getElementById("interest").style.left = showInterestCard ? '42%' : '23%';
     }
 
     const showHistory = () => {
         showHistoryCard = !showHistoryCard;
-        document.getElementById("history-card").style.left = showHistoryCard ? '40%' : '67%';
+        document.getElementById("history-card").style.left = showHistoryCard ? '42%' : '65%';
     }
 
     const clearAll = () => {
