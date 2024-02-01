@@ -1,26 +1,27 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Cibernéticos</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/x-icon" href="icon.jpg">
+    <title>Calculadora</title>
 </head>
 
 <body>
-    <div class="background grid justify-center items-center">
-        <div class="box">&nbsp;</div>
+    <div class="background grid justify-center items-center ">
+        <div class="box text-2xl">&nbsp;</div>
         <div class="calculator-wrapper">
             <div class="calculator-result flex justify-center">
-                <input type="tel" class="m-10 p-4 w-4/5 mb-2" id="result" placeholder="0">
+                <input type="tel" class="m-9 p-4 w-11/12 mb-2" id="result" placeholder="0">
             </div>
 
             <div class="calculator-inner flex justify-center">
 
-                <div class="calculator-numbers grid grid-cols-4">
+                <div class="calculator-numbers text-3xl grid grid-cols-4 font-light">
                     <input type="button" onclick="clearAll()" value="AC"/>
-                    <input type="button" onclick="showInterest()" value="J"/>
+                    <input type="button" onclick="showInterest()" value="J" class="mobile-disabled"/>
                     <input type="button" onclick="display(isOpen ? ')' : '(', true)" value="()"/>
                     <input type="button" onclick="display('/')" value="/"/>
 
@@ -40,7 +41,7 @@
                     <input type="button" onclick="display('+')" value="+"/>
 
                     <input type="button" onclick="display('0')" value="0"/>
-                    <input type="button" onclick="showHistory()" value="H">
+                    <input type="button" onclick="showHistory()" value="H" class="mobile-disabled">
                     <input type="button" onclick="display(',')" value=","/>
                     <input type="button" onclick="calculate()" value="="/>
                 </div>
@@ -53,21 +54,20 @@
             <div class="text-center text-2xl">
                 <p>Histórico</p>
             </div>
-            <div class="flex justify-center flex-col" id="history-inner">
-            </div>
+            <div class="flex justify-center flex-col text-lg" id="history-inner"></div>
         </div>
 
-        <div id="interest" class="calculator-compound-interest grid justify-center">
-            <p class="text-center">Valor inicial</p>
+        <div id="interest" class="calculator-compound-interest grid justify-center font-light text-xl">
+            <label for="c" class="text-center">Valor inicial</label>
             <input type="tel" placeholder="0" id="c"/>
-            <p class="text-center">Taxa de juros a.m.</p>
+            <label for="i" class="text-center">Taxa de juros a.m.</label>
             <input type="tel" placeholder="%" id="i"/>
-            <p class="text-center">Período em meses</p>
+            <label for="t" class="text-center">Período em meses</label>
             <input type="tel" placeholder="3 meses" id="t"/>
             <div class="flex justify-center">
                 <input type="button" onclick="calculateInterest()" value="="/>
             </div>
-            <p class="text-center">Resultado</p>
+            <label for="interest-result" class="text-center">Resultado</label>
             <input type="tel" placeholder="0,0" id="interest-result" disabled/>
         </div>
 
@@ -75,188 +75,4 @@
 </body>
 </html>
 
-<style>
-    body {
-        color: whitesmoke;
-        font-weight: 300;
-    }
-
-    .background {
-        grid-template-columns: repeat(30, minmax(0, 1fr));
-        max-height: 100vh;
-        overflow: hidden;
-    }
-
-    .calculator-wrapper {
-        background-color: #232323;
-        position: absolute;
-        left: 40%;
-        height: 600px;
-        width: 450px;
-        z-index: 99;
-    }
-
-    .calculator-history {
-        background-color: #232323;
-        position: absolute;
-        left: 40%;
-        top: 41%;
-        height: 382px;
-        width: 300px;
-        transition-duration: 1s;
-        z-index: 9;
-    }
-
-    .calculator-compound-interest {
-        background-color: #232323;
-        position: absolute;
-        left: 40%;
-        top: 41%;
-        height: 382px;
-        width: 300px;
-        transition-duration: 1s;
-        z-index: 9;
-        padding: 10px;
-    }
-
-    .calculator-compound-interest p {
-        margin-bottom: -10px;
-    }
-
-    .calculator-compound-interest input {
-        margin-bottom: 15px;
-        color: #232323;
-        text-align: end;
-        font-size: 17px;
-        padding-right: 12px;
-        background-color: whitesmoke;
-    }
-
-    .calculator-compound-interest input[type=button] {
-        padding: 0 90px;
-        color: whitesmoke;
-        background-color: #232323;
-        font-size: 17px;
-        font-weight: 300;
-        transition: all .5s ease-out;
-    }
-
-    .calculator-compound-interest input[type="button"]:hover {
-        cursor: pointer;
-        background-color: whitesmoke;
-        color: #232323;
-        transition: background-color 0s;
-    }
-
-    .calculator-result input {
-        font-size: 20px;
-        text-align: right;
-        letter-spacing: 2px;
-        background-color: whitesmoke;
-        color: #232323;
-    }
-
-    .calculator-numbers input {
-        padding: 25px;
-        color: whitesmoke;
-        margin: 10px;
-        font-size: 17px;
-        font-weight: 300;
-        transition: all .5s ease-out;
-    }
-
-    .calculator-numbers input:hover {
-        cursor: pointer;
-        background-color: whitesmoke;
-        color: #232323;
-        transition: background-color 0s;
-    }
-
-    .calculator-numbers input[value] {
-        padding: 25px;
-        font-size: 23px;
-        margin: 5px;
-    }
-
-    .box {
-        border: 1px solid white;
-        background-color: whitesmoke;
-        font-size: 20pt;
-        transition: all .7s ease-out;
-    }
-    .box:hover {
-        background-color: #232323;
-        transition: background-color 0s;
-    }
-
-    #history-inner {
-        background-color: whitesmoke;
-        color: #232323;
-        margin: 20px;
-        height: 275px;
-        text-align: end;
-        font-size: 17px;
-        overflow: overlay;
-        padding-right: 10px;
-    }
-</style>
-
-<script>
-    function multiplyNode(node, count) {
-        for (let i = 0; i < count - 1; i++) {
-            const copy = node.cloneNode(true);
-            node.parentNode.insertBefore(copy, node);
-        }
-    }
-
-    multiplyNode(document.querySelector('.box'), window.innerHeight);
-
-    let showInterestCard = true;
-    let showHistoryCard = true;
-    const showInterest = () => {
-        showInterestCard = !showInterestCard;
-        document.getElementById("interest").style.left = showInterestCard ? '42%' : '23%';
-    }
-
-    const showHistory = () => {
-        showHistoryCard = !showHistoryCard;
-        document.getElementById("history-card").style.left = showHistoryCard ? '42%' : '65%';
-    }
-
-    const clearAll = () => {
-        return document.getElementById('result').value = "";
-    }
-
-    let isOpen = false;
-    const display = (value, parentesis = false) => {
-        if (parentesis) {
-            isOpen = !isOpen;
-        }
-
-        return document.getElementById('result').value += value;
-    }
-
-    const calculateInterest = () => {
-        const c = document.getElementById('c').value;
-        const i = document.getElementById('i').value / 100;
-        const t = document.getElementById('t').value;
-
-        const result = c * Math.pow((1+i), t);
-        document.getElementById('interest-result').value = result.toFixed(2);
-    }
-
-    const calculate = () => {
-        // const percentage = expression.match('[0-9]{1,9}|%')[0];
-        // const updatedExpression = expression.replaceAll('%', percentage);
-
-        const history = document.getElementById('history-inner');
-        const expression = document.getElementById('result').value;
-
-        let result = document.getElementById('result').value = eval(document.getElementById('result').value);
-
-        let item = document.createElement("p");
-        let text = document.createTextNode(`${expression} = ${result}`);
-        item.appendChild(text);
-        history.appendChild(item);
-    }
-</script>
+<script src="script.js"></script>

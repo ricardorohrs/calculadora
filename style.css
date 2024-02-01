@@ -1,0 +1,126 @@
+body {
+    color: whitesmoke;
+}
+
+.background {
+    grid-template-columns: repeat(30, minmax(0, 1fr));
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.calculator-wrapper {
+    background-color: #232323;
+    position: absolute;
+    left: 40%;
+    height: 600px;
+    width: 450px;
+    z-index: 99;
+}
+
+.calculator-history {
+    background-color: #232323;
+    position: absolute;
+    left: 40%;
+    top: 41%;
+    height: 382px;
+    width: 300px;
+    transition-duration: 1s;
+    z-index: 9;
+}
+
+.calculator-compound-interest {
+    background-color: #232323;
+    position: absolute;
+    left: 40%;
+    top: 41%;
+    height: 382px;
+    width: 300px;
+    transition-duration: 1s;
+    z-index: 9;
+    padding: 10px;
+}
+
+.calculator-compound-interest p {
+    margin-bottom: -10px;
+}
+
+.calculator-compound-interest input {
+    margin-bottom: 15px;
+    color: #232323;
+    text-align: end;
+    font-size: 17px;
+    padding-right: 12px;
+    background-color: whitesmoke;
+}
+
+.calculator-compound-interest input[type=button] {
+    padding: 0 90px;
+    color: whitesmoke;
+    background-color: #232323;
+    transition: all .5s ease-out;
+}
+
+.calculator-compound-interest input[type="button"]:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: #232323;
+    transition: background-color 0s;
+}
+
+.calculator-result input {
+    font-size: 20px;
+    text-align: right;
+    letter-spacing: 2px;
+    background-color: whitesmoke;
+    color: #232323;
+}
+
+.calculator-numbers input {
+    padding: 25px;
+    color: whitesmoke;
+    margin: 10px;
+    transition: all .5s ease-out;
+}
+
+.calculator-numbers input:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: #232323;
+    transition: background-color 0s;
+}
+
+.calculator-numbers input[value] {
+    margin: 5px;
+}
+
+.box {
+    background-color: whitesmoke;
+    transition: all .7s ease-out;
+    border: 1px solid white;
+}
+
+.box:hover {
+    transition: background-color 0s;
+    background-color: #232323;
+}
+
+#history-inner {
+    background-color: whitesmoke;
+    color: #232323;
+    margin: 20px;
+    height: 275px;
+    text-align: end;
+    overflow: auto;
+    padding: 10px 10px 0 0;
+}
+
+@media (max-width: 750px) {
+    .calculator-wrapper {
+        left: 1%;
+        width: calc(100% - 15px);
+    }
+
+    #interest, #history-card {
+        display: none;
+    }
+}
