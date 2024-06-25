@@ -20,12 +20,12 @@ let isOpen = false;
 
 const showInterest = () => {
     showInterestCard = !showInterestCard;
-    document.getElementById("interest").style.left = showInterestCard ? '42%' : '23%';
+    document.getElementById("interest").style.left = showInterestCard ? '42%' : '10%';
 }
 
 const showHistory = () => {
     showHistoryCard = !showHistoryCard;
-    document.getElementById("history-card").style.left = showHistoryCard ? '42%' : '65%';
+    document.getElementById("history-card").style.left = showHistoryCard ? '42%' : '72%';
 }
 
 const clearAll = () => {
@@ -52,6 +52,10 @@ const calculateInterest = () => {
 const calculate = () => {
     const history = document.getElementById('history-inner');
     const expression = document.getElementById('result').value;
+
+    if (expression === "") {
+        return;
+    }
 
     let result = document.getElementById('result').value = eval(document.getElementById('result').value);
 
